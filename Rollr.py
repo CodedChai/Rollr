@@ -5,7 +5,7 @@ lineNumber = 0
 with open(sys.argv[1],'r') as jsCodeFile:
     for line in jsCodeFile:
         lineNumber+=1
-        if re.match("\s*$", line):
+        if (re.match("\s*$", line) or re.match("\/\/.*", line)):
             continue
         if not re.match(".+[\{\};][\s]*$", line):
             print("%d. Statement should end with a semicolon." % lineNumber)
